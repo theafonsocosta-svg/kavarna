@@ -35,6 +35,10 @@
       overflow-x: hidden;
       cursor: none;
     }
+    @media (pointer: coarse) {
+      body { cursor: auto; }
+      #cursor, #cursor-ring { display: none; }
+    }
 
     /* ─── Custom Cursor ─── */
     #cursor {
@@ -61,6 +65,54 @@
     body:has(button:hover) #cursor { width: 14px; height: 14px; }
     body:has(a:hover) #cursor-ring,
     body:has(button:hover) #cursor-ring { width: 60px; height: 60px; opacity: 0.4; }
+
+    /* Hide cursor on touch devices */
+    @media (pointer: coarse) {
+      #cursor, #cursor-ring { display: none !important; }
+    }
+
+    /* ─── Hamburger (hidden on desktop) ─── */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
+      width: 44px; height: 44px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      z-index: 2000;
+      position: relative;
+    }
+    .hamburger span {
+      display: block;
+      width: 28px; height: 2px;
+      background: var(--cream);
+      transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
+      transform-origin: center;
+    }
+    .hamburger.open span { background: var(--gold); }
+    .hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    /* ─── Nav overlay (closes menu on tap outside) ─── */
+    .nav-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      z-index: 998;
+      backdrop-filter: blur(2px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s ease;
+    }
+    .nav-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
 
     /* ─── Navbar ─── */
     nav {
@@ -131,6 +183,7 @@
     /* ─── Hero ─── */
     #hero {
       height: 100vh;
+      height: 100dvh;
       position: relative;
       overflow: hidden;
       display: flex;
@@ -900,6 +953,9 @@
       .container { padding: 0 20px; }
       section { padding: 60px 0; }
 
+      nav { padding: 18px 20px; }
+      nav.scrolled { padding: 14px 20px; }
+
       /* NAV - Hamburger */
       .nav-links {
         position: fixed;
@@ -907,10 +963,11 @@
         width: 75%;
         max-width: 320px;
         height: 100vh;
-        background: rgba(12,11,9,0.97);
-        backdrop-filter: blur(20px);
+        background: #0f0d0a;
+        backdrop-filter: blur(30px);
         flex-direction: column;
-        padding: 100px 40px 40px;
+        padding: 40px;
+        padding-top: 100px;
         gap: 0;
         transition: right 0.4s cubic-bezier(0.16,1,0.3,1);
         z-index: 999;
@@ -931,7 +988,15 @@
         text-align: center;
       }
       .hamburger {
-        display: flex !important;
+        display: flex;
+        position: fixed;
+        top: 16px;
+        right: 16px;
+        background: rgba(12,11,9,0.5);
+        backdrop-filter: blur(10px);
+        border-radius: 50%;
+        width: 48px;
+        height: 48px;
       }
 
       /* HERO */
@@ -1019,7 +1084,8 @@
         grid-template-columns: 1fr;
         gap: 36px;
       }
-      .map-wrap iframe { height: 260px; }
+      .map-wrap { height: 260px; }
+      .map-wrap iframe { height: 100%; }
 
       /* REVIEWS */
       .reviews-top {
@@ -1098,6 +1164,10 @@
       <li><a href="#localizacao">Localização</a></li>
       <li><a href="#reviews">Reviews</a></li>
       <li><a href="tel:252177711" class="nav-cta">Reservar</a></li>
+      <!-- Mobile Close Hint -->
+      <li class="mobile-close-hint" style="margin-top:auto; font-size:10px; color:var(--gold); letter-spacing:2px; text-transform:uppercase; text-align:center; opacity:0.6; padding-top:40px;">
+        Tocar fora para fechar
+      </li>
     </ul>
     <button class="hamburger" id="hamburger" aria-label="Menu">
       <span></span><span></span><span></span>

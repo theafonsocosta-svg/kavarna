@@ -855,6 +855,220 @@
       transform: rotate(45deg);
     }
 
+    /* ═══════════════════ MOBILE RESPONSIVE ═══════════════════ */
+
+    /* ── Tablet (max 1024px) ── */
+    @media (max-width: 1024px) {
+      .container { padding: 0 32px; }
+      section { padding: 80px 0; }
+
+      .hero-title {
+        font-size: clamp(60px, 12vw, 140px);
+      }
+      .hero-title span.a { margin: 0 -1.5vw; }
+
+      .sobre-grid { gap: 48px; }
+
+      .produtos-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+      .produto-card { min-height: 340px; }
+
+      .menu-cols {
+        grid-template-columns: 1fr;
+        column-gap: 0;
+      }
+
+      .loc-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      .reviews-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+      }
+    }
+
+    /* ── Mobile (max 768px) ── */
+    @media (max-width: 768px) {
+      .container { padding: 0 20px; }
+      section { padding: 60px 0; }
+
+      /* NAV - Hamburger */
+      .nav-links {
+        position: fixed;
+        top: 0; right: -100%;
+        width: 75%;
+        max-width: 320px;
+        height: 100vh;
+        background: rgba(12,11,9,0.97);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        padding: 100px 40px 40px;
+        gap: 0;
+        transition: right 0.4s cubic-bezier(0.16,1,0.3,1);
+        z-index: 999;
+        border-left: 1px solid rgba(184,150,106,0.15);
+      }
+      .nav-links.open { right: 0; }
+      .nav-links li { width: 100%; }
+      .nav-links li a {
+        display: block;
+        padding: 18px 0;
+        font-size: 14px;
+        letter-spacing: 3px;
+        border-bottom: 1px solid rgba(184,150,106,0.08);
+      }
+      .nav-cta {
+        margin-top: 24px;
+        width: 100%;
+        text-align: center;
+      }
+      .hamburger {
+        display: flex !important;
+      }
+
+      /* HERO */
+      .hero { min-height: 100svh; }
+      .hero-title {
+        font-size: clamp(48px, 13vw, 100px);
+        letter-spacing: 0px;
+      }
+      .hero-title span.a { margin: 0 -1.2vw; }
+      .hero-title sup {
+        font-size: 14px;
+        margin-left: 4px;
+        margin-top: -15px;
+      }
+      .hero-subtitle {
+        font-size: 10px;
+        letter-spacing: 3px;
+        margin-top: 24px;
+      }
+      .hero-label {
+        font-size: 8px;
+        letter-spacing: 4px;
+      }
+      .hero-actions {
+        flex-direction: column;
+        gap: 12px;
+        align-items: center;
+      }
+      .btn-gold, .btn-outline {
+        width: 100%;
+        max-width: 280px;
+        text-align: center;
+      }
+      .hero-logo-icon svg { height: 50px; }
+
+      /* SOBRE */
+      .sobre-grid {
+        text-align: center;
+      }
+      .sobre-body { font-size: 15px; }
+      .sobre-stats {
+        flex-direction: column;
+        align-items: center;
+        gap: 28px;
+      }
+      .stat-n { font-size: 44px; }
+
+      /* PRODUTOS */
+      .produtos-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .produto-card { min-height: 300px; }
+      .produto-info h3 { font-size: 22px; }
+
+      /* EMENTA */
+      .ementa-header .title { font-size: 36px; }
+      .tabs-row {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 6px;
+      }
+      .tab-btn {
+        padding: 8px 14px;
+        font-size: 9px;
+        letter-spacing: 2px;
+      }
+      .menu-cols {
+        grid-template-columns: 1fr;
+      }
+      .menu-row {
+        gap: 12px;
+        padding: 16px 0;
+      }
+      .menu-thumb {
+        width: 44px;
+        height: 44px;
+      }
+      .menu-nome { font-size: 18px; }
+      .menu-desc { font-size: 11px; }
+      .menu-preco { font-size: 16px; }
+
+      /* LOCALIZAÇÃO */
+      .loc-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+      .map-wrap iframe { height: 260px; }
+
+      /* REVIEWS */
+      .reviews-top {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+        margin-bottom: 40px;
+      }
+      .reviews-grid {
+        grid-template-columns: 1fr;
+        gap: 3px;
+      }
+      .review-card { padding: 28px 24px; }
+      .g-badge { padding: 20px 32px; }
+      .g-num { font-size: 52px; }
+
+      /* FOOTER */
+      footer { padding: 48px 0 28px; }
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+        margin-bottom: 40px;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+      }
+    }
+
+    /* ── Small phones (max 480px) ── */
+    @media (max-width: 480px) {
+      .hero-title {
+        font-size: clamp(40px, 14vw, 70px);
+      }
+      .hero-title span.a { margin: 0 -0.8vw; }
+      .hero-title sup {
+        font-size: 12px;
+        margin-left: 2px;
+        margin-top: -10px;
+      }
+      .hero-subtitle {
+        font-size: 9px;
+        letter-spacing: 2.5px;
+      }
+      .produto-card { min-height: 260px; }
+      section { padding: 48px 0; }
+      .title { font-size: 28px !important; }
+    }
   </style>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
@@ -885,7 +1099,11 @@
       <li><a href="#reviews">Reviews</a></li>
       <li><a href="tel:252177711" class="nav-cta">Reservar</a></li>
     </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
+  <div class="nav-overlay" id="navOverlay"></div>
 
   <!-- ════════════ HERO ════════════ -->
   <section id="hero">
@@ -1511,6 +1729,26 @@
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 60);
     }, { passive: true });
+
+    // ── Hamburger mobile menu toggle
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    const navOverlay = document.getElementById('navOverlay');
+
+    function toggleMenu() {
+      hamburger.classList.toggle('open');
+      navLinks.classList.toggle('open');
+      navOverlay.classList.toggle('open');
+      document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
+    }
+    hamburger.addEventListener('click', toggleMenu);
+    navOverlay.addEventListener('click', toggleMenu);
+    // Close menu when clicking a nav link
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        if (navLinks.classList.contains('open')) toggleMenu();
+      });
+    });
 
     // ── Hero photo panels parallax
     const h3d = document.getElementById('h3d');

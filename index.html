@@ -25,15 +25,22 @@
     }
 
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; font-size: 16px; }
+    html, body {
+      width: 100%;
+      min-height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
 
     body {
       background: var(--dark);
       color: var(--text);
       font-family: 'Outfit', sans-serif;
       font-weight: 300;
-      overflow-x: hidden;
       cursor: none;
+      overscroll-behavior: none; /* Prevents elastic "sliding" or pulling the page */
     }
     @media (pointer: coarse) {
       body { cursor: auto; }

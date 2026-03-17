@@ -240,11 +240,11 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse 80% 60% at 50% 60%, rgba(184,150,106,0.06) 0%, transparent 70%),
+        radial-gradient(ellipse 80% 70% at 50% 50%, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.5) 100%),
         linear-gradient(180deg,
-          rgba(12,11,9,0.25) 0%,
-          rgba(12,11,9,0.05) 35%,
-          rgba(12,11,9,0.05) 55%,
+          rgba(12,11,9,0.4) 0%,
+          transparent 40%,
+          transparent 60%,
           rgba(12,11,9,0.85) 100%
         );
       z-index: 1;
@@ -259,14 +259,17 @@
     .hero-label {
       display: inline-flex;
       align-items: center;
-      gap: 14px;
-      font-size: 10px;
-      letter-spacing: 6px;
+      justify-content: center;
+      gap: 16px;
+      font-size: clamp(10px, 1.2vw, 12px);
+      letter-spacing: 5px;
       text-transform: uppercase;
       color: var(--gold);
       margin-bottom: 24px;
       opacity: 0;
       animation: fadeUp 1s 0.4s forwards;
+      text-shadow: 0 4px 12px rgba(0,0,0,0.5); /* Shadow for legibility */
+      font-weight: 400;
     }
     .hero-label::before,
     .hero-label::after {
@@ -278,13 +281,15 @@
     /* EXACT LOGO MATCH TYPOGRAPHY */
     .hero-subtitle {
       font-family: 'Outfit', sans-serif;
-      font-size: clamp(11px, 1.5vw, 15px);
-      letter-spacing: 4px;
+      font-size: clamp(14px, 2vw, 18px);
+      letter-spacing: 3px;
       text-transform: uppercase;
-      margin-top: 35px;
-      color: var(--gold);
+      margin-top: 28px;
+      color: var(--cream); /* Switched to cream for much higher contrast */
       opacity: 0;
       animation: fadeUp 1.4s 0.9s cubic-bezier(0.16,1,0.3,1) forwards;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+      font-weight: 400;
     }
     .hero-title {
       font-family: 'Bodoni Moda', serif;
@@ -299,6 +304,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      text-shadow: 0 10px 30px rgba(0,0,0,0.5); /* Deep high-end shadow */
     }
     /* Elegant overlaps like the original logo, but slightly looser */
     .hero-title span.k { margin-right: 0.8vw; }
@@ -324,7 +330,7 @@
     .hero-divider-line {
       width: 48px; height: 1px;
       background: var(--gold);
-      opacity: 0.5;
+      opacity: 0.8; /* More visible */
     }
     .hero-divider-dot {
       width: 4px; height: 4px;
